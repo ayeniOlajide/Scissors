@@ -1,0 +1,56 @@
+GET  http://localhost:3000
+
+
+### register route
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+   "firstName": "ola",
+   "lastName": "jide",
+   "username": "olajide",
+   "email": "olajide@example.com",
+   "password": "password123"
+}
+
+###login route
+POST  http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "email": "olajidezoe@gmail.com",
+    "password": "pass1234"
+}
+
+
+### refresh token
+POST http://localhost:3000/auth/refresh-token
+Content-Type: application/json
+
+{
+    "refreshToken": 
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MjI4OTYyNzEsImV4cCI6MTc1NDQ1Mzg3MSwiYXVkIjoiNjZhOWU4YjE0MTFkNzAwNjQ2ZjkyNWIxIiwiaXNzIjoic2Npc3NvcnMuY29tIn0.Sq41D5JhOLiZxarAUWja4VEKXsmzS17BM6L-l2hhukw"
+}
+
+### Logout route
+DELETE http://localhost:3000/auth/logout
+Content-Type: application/json
+
+{
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MjI4OTYyOTYsImV4cCI6MTc1NDQ1Mzg5NiwiYXVkIjoiNjZhOWU4YjE0MTFkNzAwNjQ2ZjkyNWIxIiwiaXNzIjoic2Npc3NvcnMuY29tIn0.MAHbL1sT0hRN92Kd3q9CgqbTg9FyRamQvP3NH-QxISg"
+}
+
+
+
+####
+GET http://localhost:3000/shortUrls
+Authorization: Bearer "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MjI4OTU1MjcsImV4cCI6MTcyMjg5OTEyNywiYXVkIjoiNjZhOWU4YjE0MTFkNzAwNjQ2ZjkyNWIxIiwiaXNzIjoic2Npc3NvcnMuY29tIn0.kbhaB0kfo-g4Vnc1u5koqMnHNpKSC0KECBC60_vuT_k" 
+
+### Access protected route (replace ACCESS_TOKEN with actual token from login)
+GET http://localhost:3000/shortUrls
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MjI4OTgyMzgsImV4cCI6MTcyMjkwMTgzOCwiYXVkIjoiNjZhOWU4YjE0MTFkNzAwNjQ2ZjkyNWIxIiwiaXNzIjoic2Npc3NvcnMuY29tIn0.LQEFsFz42tSlNE2niQtQzZZH25waNL4SQokrHMrrxg0
+
+### Create a short URL (after login, use token from login)
+POST http://localhost:3000/shortUrls
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MjI4OTgzMDMsImV4cCI6MTcyMjkwMTkwMywiYXVkIjoiNjZhOWU4YjE0MTFkNzAwNjQ2ZjkyNWIxIiwiaXNzIjoic2Npc3NvcnMuY29tIn0.AIJRXT4IdzJxRwOBqoTfPMZ3ShWI8N9iB7MSNTipDsY
+Content-Type: application/json
